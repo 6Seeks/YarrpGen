@@ -7,8 +7,8 @@ YarrpGen is a tool implemented in __Go__. It's designed to generate random IPv6 
 
 This tool is motivate by the papers titled:
 
-- \href{https://dl.acm.org/doi/pdf/10.1145/2987443.2987479}{Yarrp'ing the Internet: Randomized High-speed Active Topology Discovery} 
-- \href{https://dl.acm.org/doi/pdf/10.1145/3595290}{Yarrpbox: Detecting Middleboxes at Internet-scale}
+- [Yarrp'ing the Internet: Randomized High-speed Active Topology Discovery](https://dl.acm.org/doi/pdf/10.1145/2987443.2987479)
+- [Yarrpbox: Detecting Middleboxes at Internet-scale](https://dl.acm.org/doi/pdf/10.1145/3595290)
 
 ## Is YarrpGen Necessary?
 
