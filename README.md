@@ -1,5 +1,5 @@
 
-# YarrpGen: A Tool for Enabling Yarp Support for "Entire Mode" in IPv6
+# YarrpGen: A Tool for Enabling Yarrp Support for "Entire Mode" in IPv6
 
 ## What is YarrpGen?
 
