@@ -5,6 +5,11 @@
 
 YarrpGen is a tool implemented in __Go__. It's designed to generate random IPv6 targets across multiple prefixes at a specified granularity. Importantly, __it guarantees an even distribution of candidate addresses over all input prefixes__.
 
+This tool is motivate by the papers titled:
+
+- \href{https://dl.acm.org/doi/pdf/10.1145/2987443.2987479}{Yarrp'ing the Internet: Randomized High-speed Active Topology Discovery} 
+- \href{https://dl.acm.org/doi/pdf/10.1145/3595290}{Yarrpbox: Detecting Middleboxes at Internet-scale}
+
 ## Is YarrpGen Necessary?
 
 Imagine you have three prefixes: 2001::/16, 2004:1234:5678::/48, and 2006::1234:5678::/48. How do you choose any /64 with the same probability within them? Simply selecting a prefix at random and then choosing a /64 within it will result in uneven probabilities.
@@ -26,9 +31,9 @@ Remember, `yarrp` does not support "entire mode" in IPv6 by default, but it can 
 
 YarrpGen requires three parameters:
 
-    - `-l` the granularity (unit prefix/network) you wish to scan, e.g., /64 or /60.
-    - `-c` the number of target addresses you want to generate, e.g., 1e7.
-    - `-i` the type of Interface Identifiers you wish to use, options: lowbyte1/fixiid/random.
+- `-l` the granularity (unit prefix/network) you wish to scan, e.g., /64 or /60.
+- `-c` the number of target addresses you want to generate, e.g., 1e7.
+- `-i` the type of Interface Identifiers you wish to use, options: lowbyte1/fixiid/random.
 
 2. Using with Yarrp
 
