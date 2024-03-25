@@ -71,7 +71,7 @@ func main() {
   var iid string
   flag.IntVar(&prefixLen, "l", 64, "")
 
-  flag.IntVar(&count, "c", 1e7, "")
+  flag.IntVar(&count, "c", 1e8, "")
   flag.StringVar(&iid, "i", "lowbyte1", "lowbyte1/fixed/random")
   flag.Parse()
   rand.Seed(time.Now().UnixNano())
