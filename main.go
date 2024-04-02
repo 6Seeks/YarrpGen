@@ -4,6 +4,10 @@ import (
   "encoding/binary"
   "flag"
   "fmt"
+<<<<<<< HEAD
+=======
+  "math"
+>>>>>>> 7943dce (better random)
   "math/rand"
 
   "net"
@@ -14,6 +18,11 @@ var prefixes = make([]uint64, 0)
 var masks = make([]uint64, 0)
 var acceptance = make([]float64, 0)
 var alternative = make([]int, 0)
+<<<<<<< HEAD
+=======
+var s = rand.Float64()
+var num float64 = 0
+>>>>>>> 7943dce (better random)
 
 func FlushAreaDivision() {
   for i := 0; i < len(prefixes); i++ {
@@ -58,8 +67,9 @@ func FlushAreaDivision() {
 }
 
 func Generate() int {
-  column := rand.Intn(len(acceptance))
-  if acceptance[column] < rand.Float64() {
+  s = math.Mod(s+0.6180339887498949, 1.0)
+  column := int(math.Floor(s * num))
+  if acceptance[column] < s*num-float64(column) {
     return alternative[column]
   }
   return column
@@ -98,6 +108,7 @@ func main() {
       prefixes = append(prefixes, binary.BigEndian.Uint64(ip6[:8]))
       acceptance = append(acceptance, float64(int64(1<<(64-n))))
       alternative = append(alternative, 0)
+      num += 1.0
     }
   }
 
@@ -112,7 +123,7 @@ func main() {
     index := Generate()
     base := prefixes[index]
 
-    offset := rand.Uint64()& masks[index]
+    offset := rand.Uint64() & masks[index]
     binary.BigEndian.PutUint64(ip[:8], base+offset)
     switch iid {
     case "lowbyte1":
