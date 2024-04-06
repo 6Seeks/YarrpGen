@@ -4,10 +4,7 @@ import (
   "encoding/binary"
   "flag"
   "fmt"
-<<<<<<< HEAD
-=======
   "math"
->>>>>>> 7943dce (better random)
   "math/rand"
 
   "net"
@@ -18,11 +15,8 @@ var prefixes = make([]uint64, 0)
 var masks = make([]uint64, 0)
 var acceptance = make([]float64, 0)
 var alternative = make([]int, 0)
-<<<<<<< HEAD
-=======
 var s = rand.Float64()
 var num float64 = 0
->>>>>>> 7943dce (better random)
 
 func FlushAreaDivision() {
   for i := 0; i < len(prefixes); i++ {
@@ -81,7 +75,7 @@ func main() {
   var iid string
   flag.IntVar(&prefixLen, "l", 64, "")
 
-  flag.IntVar(&count, "c", 1e8, "")
+  flag.IntVar(&count, "c", 1e7, "")
   flag.StringVar(&iid, "i", "lowbyte1", "lowbyte1/fixed/random")
   flag.Parse()
   rand.Seed(time.Now().UnixNano())
