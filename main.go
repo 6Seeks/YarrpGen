@@ -13,6 +13,7 @@ import (
 
 var prefixes = make([]uint64, 0)
 var masks = make([]uint64, 0)
+var records = make([]uint64,0)
 var acceptance = make([]float64, 0)
 var alternative = make([]int, 0)
 var s = rand.Float64()
@@ -69,6 +70,16 @@ func Generate() int {
   return column
 }
 
+func fnv1(value uint64) uint64 {
+  var hash uint64 = 14695981039346656037
+  for i := 0; i < 8; i++ {
+    hash ^= value & 0xff
+    hash *= 1099511628211
+    value >>= 8
+  }
+  return hash
+}
+
 func main() {
   var prefixLen int
   var count int
@@ -99,6 +110,7 @@ func main() {
       }
       entire += (1 << (prefixLen - n))
       masks = append(masks, uint64((1<<(64-n))-(1<<(64-prefixLen))))
+      records = append(records, rand.Uint64())
       prefixes = append(prefixes, binary.BigEndian.Uint64(ip6[:8]))
       acceptance = append(acceptance, float64(int64(1<<(64-n))))
       alternative = append(alternative, 0)
@@ -117,7 +129,8 @@ func main() {
     index := Generate()
     base := prefixes[index]
 
-    offset := rand.Uint64() & masks[index]
+    offset := fnv1(records[index]) & masks[index]
+    records[index]++
     binary.BigEndian.PutUint64(ip[:8], base+offset)
     switch iid {
     case "lowbyte1":
